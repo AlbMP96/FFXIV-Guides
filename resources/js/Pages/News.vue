@@ -30,10 +30,10 @@ defineProps({
                     <main>
                         <div v-for="item in news" :key="item.id" class="text-center text-white border-4 border-red-500 rounded p-3.5 my-3.5">
                             <a :href="item.url" target="_blank">
-                                    <p class="text-2xl underline mb-2 decoration-2">{{ item.title }}</p>
-                                    <img class="mx-auto" :src="item.image" :alt="item.title">
+                                <p class="text-2xl underline mb-2 decoration-2">{{ item.title }}</p>
+                                <img class="mx-auto" :src="item.image" :alt="item.title">
                             </a>
-                                    <p>{{ item.description }}</p>
+                            <p>{{ item.description }}</p>
                         </div>
                     </main>
                </div>
