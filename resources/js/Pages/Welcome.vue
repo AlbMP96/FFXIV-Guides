@@ -41,9 +41,6 @@ function handleImageError() {
         >
             <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                 <Header :canLogin="canLogin" :canRegister="canRegister"/>
-                <nav>
-                    <Link href="/news">News</Link>
-                </nav>
                <main>
                     <ProgressSlider :items="news.slice(0,5)" />
                 </main>
