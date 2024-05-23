@@ -25,6 +25,7 @@ defineProps({
                 <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                     <Header :canLogin="canLogin" :canRegister="canRegister"/>
                     <main>
+                        <h1 class="text-3xl underline font-bold text-center m-5">Latest News</h1>
                         <div v-for="item in news" :key="item.id" class="text-center text-white border-4 border-red-500 rounded p-3.5 my-3.5">
                             <a :href="item.url" target="_blank">
                                 <p class="text-2xl underline mb-2 decoration-2">{{ item.title }}</p>
