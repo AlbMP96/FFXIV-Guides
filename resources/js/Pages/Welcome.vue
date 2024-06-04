@@ -2,6 +2,9 @@
 import { Head, Link } from '@inertiajs/vue3';
 import ProgressSlider from '../Components/ProgessSlider.vue';
 import Header from '../Components/Header.vue';
+import GuideIndex from '../Components/GuideIndex.vue';
+import GuideModal from '../Components/GuideModal.vue';
+import { Teleport } from 'vue';
 
 defineProps({
     canLogin: {
@@ -20,6 +23,12 @@ defineProps({
     },
     news: {
         type: Array,
+    },
+    guides: {
+        type: JSON,
+    },
+    guide: {
+        type: JSON,
     },
 });
 
@@ -44,12 +53,16 @@ function handleImageError() {
                <main>
                     <ProgressSlider :items="news.slice(0,5)" />
                 </main>
+                <GuideIndex :guide="post" v-for="post in guides.data" :key="post.id"/>
 
                 <footer class="py-16 text-center text-sm text-black dark:text-white/70">
                     Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
                 </footer>
             </div>
         </div>
+        <Teleport to="body" v-if="guide">
+        {{ console.log(guide) }}
+            <GuideModal v-if="guide" :guide="guide"/>
+        </Teleport>
     </div>
 </template>
-

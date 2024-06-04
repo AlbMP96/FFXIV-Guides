@@ -10,4 +10,9 @@ class FFClass extends Model
     use HasFactory;
 
     protected $table = 'classes';
+
+    public function guide()
+    {
+        return $this->hasMany(Guide::class);
+    }
 }

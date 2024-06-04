@@ -1,41 +1,18 @@
 <?php
 
+use App\Http\Controllers\GuidesController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    $response = Http::get('https://na.lodestonenews.com/news/topics');
-    $news = $response->json();
+Route::get('/', [GuidesController::class, 'index']);
 
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-        'news' => $news,
-    ]);
-});
+Route::get('/news', [NewsController::class, 'index']);
 
-Route::get('/news', function () {
-    $response = Http::get('https://na.lodestonenews.com/news/topics');
-    $news = $response->json();
+Route::get('/guide', [GuidesController::class, 'create'])->middleware(['auth', 'verified'])->name('guide');
 
-    return Inertia::render('News', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'news' => $news,
-    ]);
-});
-
-Route::get('/guide', function() {
-    return Inertia::render('Guide', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-});
+Route::post('/', [GuidesController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -48,3 +25,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/{id}', [GuidesController::class, 'show']);

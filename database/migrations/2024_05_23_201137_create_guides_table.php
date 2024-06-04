@@ -22,9 +22,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
-            $table->text('content');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignID('class_id')->constrained();
+            $table->longText('content');
+            $table->foreignIdFor(\App\Models\User::class, 'user_id');
+            $table->foreignIdFor(\App\Models\FFClass::class, 'class_id');
 
         });
     }
