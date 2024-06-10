@@ -32,14 +32,6 @@ defineProps({
     },
 });
 
-
-function handleImageError() {
-    document.getElementById('screenshot-container')?.classList.add('!hidden');
-    document.getElementById('docs-card')?.classList.add('!row-span-1');
-    document.getElementById('docs-card-content')?.classList.add('!flex-row');
-    document.getElementById('background')?.classList.add('!hidden');
-}
-
 </script>
 
 <template>
@@ -52,9 +44,10 @@ function handleImageError() {
                 <Header :canLogin="canLogin" :canRegister="canRegister"/>
                <main>
                     <ProgressSlider :items="news.slice(0,5)" />
+                    <div>
+                        <GuideIndex :guide="post" v-for="post in guides.data" :key="post.id"/>
+                    </div>
                 </main>
-                <GuideIndex :guide="post" v-for="post in guides.data" :key="post.id"/>
-
                 <footer class="py-16 text-center text-sm text-black dark:text-white/70">
                     Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
                 </footer>

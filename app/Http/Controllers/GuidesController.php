@@ -10,6 +10,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Guide;
 use App\Models\FFClass;
+use Illuminate\Validation\Rule;
 
 class GuidesController extends Controller
 {
@@ -59,12 +60,19 @@ class GuidesController extends Controller
     }
 
     public function store() {
+        request()->validate([
+            'title' => ['required'],
+            'class' => ['required', 'exists:classes,id'],
+            'guide' => ['required', 'max:35000'],
+        ]);
+
         $guide = Guide::create([
             'title' => request('title'),
             'content' => request('guide'),
             'class_id' => request('class'),
-            'user_id' => Auth::id(),
+            'user_id' => Auth::id()
         ]);
-        return redirect('/');
+        return redirect('/'.$guide->id);
+
     }
 }
