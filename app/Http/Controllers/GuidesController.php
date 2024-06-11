@@ -13,24 +13,26 @@ use App\Models\FFClass;
 
 class GuidesController extends Controller
 {
-   public function index() {
+    public function index()
+    {
 
-    $response = Http::get('https://na.lodestonenews.com/news/topics?limit=5');
-    $news = $response->json();
+        $response = Http::get('https://na.lodestonenews.com/news/topics?limit=5');
+        $news = $response->json();
 
-    $guides = Guide::select('id', 'title', 'user_id', 'class_id')->with(['user:id,name', 'ffclass:id,name'])->paginate(10);
+        $guides = Guide::select('id', 'title', 'user_id', 'class_id')->with(['user:id,name', 'ffclass:id,name'])->paginate(10);
 
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-        'news' => $news,
-        'guides' => $guides,
-    ]);
+        return Inertia::render('Welcome', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+            'news' => $news,
+            'guides' => $guides,
+        ]);
     }
 
-    public function create() {
+    public function create()
+    {
         $classes = FFClass::all();
 
         return Inertia::render('Guide', [
@@ -40,7 +42,8 @@ class GuidesController extends Controller
         ]);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $guide = Guide::select('id', 'title', 'content', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name'])->find($id);
 
         return Inertia::render('GuideShow', [
@@ -52,7 +55,8 @@ class GuidesController extends Controller
         ]);
     }
 
-    public function store() {
+    public function store()
+    {
         request()->validate([
             'title' => ['required'],
             'class' => ['required', 'exists:classes,id'],
@@ -66,6 +70,5 @@ class GuidesController extends Controller
             'user_id' => Auth::id()
         ]);
         return redirect("/guide/$guide->id");
-
     }
 }
