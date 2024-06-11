@@ -33,7 +33,7 @@ defineProps({
 <template>
     <MainLayout title="Welcome" :canLogin="canLogin" :canRegister="canRegister">
         <main>
-            <ProgressSlider :items="news.slice(0, 5)" />
+            <ProgressSlider :items="news" />
             <div>
                 <GuideIndex
                     :guide="post"
