@@ -24,7 +24,7 @@ defineProps({
             <h1 class="text-3xl underline font-bold text-center m-5">
                 {{ guide.title }}
             </h1>
-            <div class="flex flex-1">
+            <div class="grid grid-cols-2">
                 <span class="mx-2">Guide by: {{ guide.user.name }}</span>
                 <span class="justify-self-end">{{ guide.ffclass.name }}</span>
             </div>
@@ -39,7 +39,7 @@ defineProps({
 }
 
 #guide :deep(h2) {
-    @apply text-2xl underline;
+    @apply text-2xl underline pt-4 pb-2;
 }
 
 #guide :deep(h3) {
@@ -60,5 +60,9 @@ defineProps({
 
 #guide :deep(p) {
     @apply my-2;
+}
+
+#guide :deep(a) {
+    @apply underline hover:text-gray-400;
 }
 </style>
