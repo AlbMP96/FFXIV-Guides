@@ -30,7 +30,11 @@ defineProps({
                         {{ item.title }}
                     </a>
                 </p>
-                <img class="mx-auto" :src="item.image" :alt="item.title" />
+                <img
+                    class="mx-auto border border-red-600 my-3"
+                    :src="item.image"
+                    :alt="item.title"
+                />
                 <p>{{ item.description }}</p>
             </div>
         </main>

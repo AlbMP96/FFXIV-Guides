@@ -37,8 +37,8 @@ defineProps({
                     Guides
                 </h1>
                 <GuideIndex
-                    :guide="post"
                     v-for="post in guides.data"
+                    :guide="post"
                     :key="post.id"
                 />
                 <Paginator :links="guides.links" />

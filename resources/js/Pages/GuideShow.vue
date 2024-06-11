@@ -27,11 +27,11 @@ defineProps({
                 <h1 class="text-3xl underline font-bold text-center m-5">
                     {{ guide.title }}
                 </h1>
-                <div class="grid grid-cols-2 border-b-2 border-red-600 pb-5">
-                    <span class="mx-2">Guide by: {{ guide.user.name }}</span>
-                    <span class="justify-self-end">{{
-                        guide.ffclass.name
-                    }}</span>
+                <div class="flex border-b-2 border-red-600 pb-5">
+                    <p class="mx-2">
+                        Guide by: {{ guide.user.name }} |
+                        {{ guide.ffclass.name }}
+                    </p>
                 </div>
                 <div v-html="guide.content" id="guide"></div>
             </div>

@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-    <div :class="`grid grid-cols-${links.length} justify-center my-5`">
+    <div :class="`flex justify-center my-5`">
         <Link
             v-for="(link, index) in links"
             v-if="links.length > 3"
