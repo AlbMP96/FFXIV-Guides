@@ -10,7 +10,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Guide;
 use App\Models\FFClass;
-use Illuminate\Validation\Rule;
 
 class GuidesController extends Controller
 {
@@ -43,18 +42,12 @@ class GuidesController extends Controller
 
     public function show($id) {
         $guide = Guide::select('id', 'title', 'content', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name'])->find($id);
-        $guides = Guide::select('id', 'title', 'user_id', 'class_id')->with(['user:id,name', 'ffclass:id,name'])->paginate(10);
 
-        $response = Http::get('https://na.lodestonenews.com/news/topics');
-        $news = $response->json();
-
-        return Inertia::render('Welcome', [
+        return Inertia::render('GuideShow', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
-            'news' => $news,
-            'guides' => $guides,
             'guide' => $guide,
         ]);
     }
@@ -63,7 +56,7 @@ class GuidesController extends Controller
         request()->validate([
             'title' => ['required'],
             'class' => ['required', 'exists:classes,id'],
-            'guide' => ['required', 'max:35000'],
+            'guide' => ['required', 'max:50000'],
         ]);
 
         $guide = Guide::create([
@@ -72,7 +65,7 @@ class GuidesController extends Controller
             'class_id' => request('class'),
             'user_id' => Auth::id()
         ]);
-        return redirect('/'.$guide->id);
+        return redirect("/guide/$guide->id");
 
     }
 }
