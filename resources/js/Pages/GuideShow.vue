@@ -20,11 +20,13 @@ defineProps({
         :canLogin="canLogin"
         :canRegister="canRegister"
     >
-        <main class="text-gray-200">
+        <main
+            class="text-gray-200 bg-gray-800 p-5 border-2 border-red-600 rounded-md"
+        >
             <h1 class="text-3xl underline font-bold text-center m-5">
                 {{ guide.title }}
             </h1>
-            <div class="grid grid-cols-2">
+            <div class="grid grid-cols-2 border-b-2 border-red-600 pb-5">
                 <span class="mx-2">Guide by: {{ guide.user.name }}</span>
                 <span class="justify-self-end">{{ guide.ffclass.name }}</span>
             </div>
@@ -56,6 +58,10 @@ defineProps({
 
 #guide :deep(ul) {
     @apply list-disc;
+}
+
+#guide :deep(li) {
+    @apply mx-5;
 }
 
 #guide :deep(p) {

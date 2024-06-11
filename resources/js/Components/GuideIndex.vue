@@ -5,7 +5,7 @@ defineProps(["guide"]);
 
 <template>
     <div
-        class="border-red-600 border-solid border-2 flex flex-1 flex-col mx-auto my-2 p-2 text-center text-gray-200 sm:w-full md:w-1/2 rounded"
+        class="border-red-600 border-solid border-2 bg-gray-800 flex flex-1 flex-col mx-auto my-2 p-2 text-center text-gray-200 sm:w-full md:w-1/2 rounded"
     >
         <Link :href="`/guide/${guide.id}`"
             ><h1 class="underline hover:text-gray-400">
