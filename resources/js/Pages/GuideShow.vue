@@ -20,17 +20,21 @@ defineProps({
         :canLogin="canLogin"
         :canRegister="canRegister"
     >
-        <main
-            class="text-gray-200 bg-gray-800 p-5 border-2 border-red-600 rounded-md"
-        >
-            <h1 class="text-3xl underline font-bold text-center m-5">
-                {{ guide.title }}
-            </h1>
-            <div class="grid grid-cols-2 border-b-2 border-red-600 pb-5">
-                <span class="mx-2">Guide by: {{ guide.user.name }}</span>
-                <span class="justify-self-end">{{ guide.ffclass.name }}</span>
+        <main>
+            <div
+                class="text-gray-200 bg-gray-800 p-5 border-2 border-red-600 rounded-md mb-5"
+            >
+                <h1 class="text-3xl underline font-bold text-center m-5">
+                    {{ guide.title }}
+                </h1>
+                <div class="grid grid-cols-2 border-b-2 border-red-600 pb-5">
+                    <span class="mx-2">Guide by: {{ guide.user.name }}</span>
+                    <span class="justify-self-end">{{
+                        guide.ffclass.name
+                    }}</span>
+                </div>
+                <div v-html="guide.content" id="guide"></div>
             </div>
-            <div v-html="guide.content" id="guide" class="pb-5"></div>
         </main>
     </MainLayout>
 </template>
@@ -53,11 +57,11 @@ defineProps({
 }
 
 #guide :deep(ol) {
-    @apply list-decimal;
+    @apply list-decimal my-3;
 }
 
 #guide :deep(ul) {
-    @apply list-disc;
+    @apply list-disc my-3;
 }
 
 #guide :deep(li) {

@@ -37,7 +37,9 @@ function submit() {
     >
         <main class="mb-10">
             <div class="flex flex-col justify-center items-center">
-                <h1 class="text-3xl text-center m-5 underline font-bold">
+                <h1
+                    class="text-3xl text-center m-5 underline font-bold text-gray-200"
+                >
                     Create your guide
                 </h1>
                 <form
@@ -45,10 +47,10 @@ function submit() {
                     class="w-screen px-10 flex flex-col items-center justify-center"
                 >
                     <div
-                        class="grid grid-cols-2 gap-x-0 my-3 text-center justify-items-center"
+                        class="grid grid-cols-2 gap-x-2 my-3 text-center justify-items-center mb-5"
                     >
                         <div class="justify-self-end">
-                            <label for="title" class="block leading-6"
+                            <label for="title" class="block leading-6 h-1/2"
                                 >Title</label
                             >
                             <input
@@ -58,30 +60,35 @@ function submit() {
                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
                             />
                         </div>
-                        <select
-                            name="ff-class"
-                            id="ff-class"
-                            v-model="form.class"
-                            class="justify-self-start mx-3 text-black focus:ring-2 focus:ring-inset focus:ring-red-600 rounded-md border-0"
-                        >
-                            <option value="undefined" hidden selected>
-                                Select Class
-                            </option>
-                            <option
-                                v-for="job in classes"
-                                :key="job.id"
-                                :value="job.id"
+                        <div class="justify-self-start">
+                            <div class="h-1/2"></div>
+                            <select
+                                name="ff-class"
+                                id="ff-class"
+                                v-model="form.class"
+                                class="mx-3 text-black focus:ring-2 focus:ring-inset focus:ring-red-600 rounded-md border-0"
                             >
-                                {{ job.name }}
-                            </option>
-                        </select>
-
-                        <div v-if="errors.title" class="text-red-800 text-xl">
+                                <option value="undefined" hidden selected>
+                                    Select Class
+                                </option>
+                                <option
+                                    v-for="job in classes"
+                                    :key="job.id"
+                                    :value="job.id"
+                                >
+                                    {{ job.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div v-if="errors.title" class="text-red-700 text-xl">
                             {{ errors.title }}
                         </div>
-                        <div v-if="errors.class" class="text-red-800 text-xl">
+                        <div v-if="errors.class" class="text-red-700 text-xl">
                             {{ errors.class }}
                         </div>
+                    </div>
+                    <div v-if="errors.guide" class="text-red-700 text-xl">
+                        {{ errors.guide }}
                     </div>
                     <QuillEditor
                         toolbar="full"
@@ -89,9 +96,6 @@ function submit() {
                         v-model:content="form.guide"
                         class="text-black bg-gray-100 min-h-screen w-9/12"
                     />
-                    <div v-if="errors.guide" class="text-red-800 text-xl">
-                        {{ errors.guide }}
-                    </div>
                     <input
                         type="submit"
                         value="Create"
@@ -106,5 +110,9 @@ function submit() {
 <style lang="postcss" scoped>
 :deep(.ql-toolbar) {
     @apply w-9/12;
+}
+
+:deep(.ql-editor) {
+    @apply h-screen;
 }
 </style>
