@@ -12,7 +12,9 @@ Route::get('/news', [NewsController::class, 'index']);
 
 Route::get('/guide', [GuidesController::class, 'create'])->middleware(['auth', 'verified'])->name('guide');
 
-Route::post('/', [GuidesController::class, 'store']);
+Route::post('/guide', [GuidesController::class, 'store']);
+
+Route::get('/guide/{id}', [GuidesController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -25,5 +27,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-Route::get('/{id}', [GuidesController::class, 'show']);

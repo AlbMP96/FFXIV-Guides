@@ -1,8 +1,6 @@
 <script setup>
 import ProgressSlider from "../Components/ProgessSlider.vue";
 import GuideIndex from "../Components/GuideIndex.vue";
-import GuideModal from "../Components/GuideModal.vue";
-import { Teleport } from "vue";
 import MainLayout from "@/Layouts/MainLayout.vue";
 
 defineProps({
@@ -48,8 +46,4 @@ defineProps({
             Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
         </footer>
     </MainLayout>
-    <Teleport to="body" v-if="guide">
-        {{ console.log(guide) }}
-        <GuideModal v-if="guide" :guide="guide" />
-    </Teleport>
 </template>
