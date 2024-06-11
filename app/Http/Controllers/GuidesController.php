@@ -44,7 +44,7 @@ class GuidesController extends Controller
 
     public function show($id)
     {
-        $guide = Guide::select('id', 'title', 'content', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name'])->find($id);
+        $guide = Guide::select('id', 'title', 'content', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name'])->findOrFail($id);
 
         return Inertia::render('GuideShow', [
             'canLogin' => Route::has('login'),
