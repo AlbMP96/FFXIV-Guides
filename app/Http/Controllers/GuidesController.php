@@ -93,6 +93,6 @@ class GuidesController extends Controller
         $name = uniqid() . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $name);
 
-        return "/images/" . $name;
+        return "/images/$name";
     }
 }
