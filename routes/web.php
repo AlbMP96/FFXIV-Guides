@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [GuidesController::class, 'index']);
-Route::post('/', [GuidesController::class, 'filter']);
 
 Route::get('/news', [NewsController::class, 'index']);
 

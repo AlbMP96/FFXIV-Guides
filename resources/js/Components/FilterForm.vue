@@ -19,10 +19,8 @@ const form = reactive({
 });
 
 function submit() {
-    router.post("/", form);
+    router.get("/", form);
 }
-
-router.reload({ only: ["guides"] });
 </script>
 
 <template>

@@ -1,4 +1,5 @@
 <script setup>
+import { router } from "@inertiajs/vue3";
 import ProgressSlider from "../Components/ProgessSlider.vue";
 import MainLayout from "@/Layouts/MainLayout.vue";
 import FilterForm from "../Components/FilterForm.vue";
@@ -28,6 +29,8 @@ defineProps({
         type: JSON,
     },
 });
+
+router.reload({ only: ["guides"] });
 </script>
 
 <template>
