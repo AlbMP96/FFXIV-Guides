@@ -1,8 +1,7 @@
 <script setup>
 import ProgressSlider from "../Components/ProgessSlider.vue";
-import GuideIndex from "../Components/GuideIndex.vue";
 import MainLayout from "@/Layouts/MainLayout.vue";
-import Paginator from "../Components/Paginator.vue";
+import FilterForm from "../Components/FilterForm.vue";
 
 defineProps({
     canLogin: {
@@ -25,6 +24,9 @@ defineProps({
     guides: {
         type: JSON,
     },
+    classes: {
+        type: JSON,
+    },
 });
 </script>
 
@@ -32,17 +34,7 @@ defineProps({
     <MainLayout title="Welcome" :canLogin="canLogin" :canRegister="canRegister">
         <main>
             <ProgressSlider :items="news" />
-            <div class="py-3 my-5">
-                <h1 class="text-3xl underline text-center text-gray-200 my-5">
-                    Guides
-                </h1>
-                <GuideIndex
-                    v-for="post in guides.data"
-                    :guide="post"
-                    :key="post.id"
-                />
-                <Paginator :links="guides.links" />
-            </div>
+            <FilterForm :guides="guides" :classes="classes" />
         </main>
         <footer class="py-16 text-center text-sm text-black dark:text-white/70">
             Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})

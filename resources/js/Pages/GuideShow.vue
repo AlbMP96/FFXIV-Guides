@@ -53,7 +53,7 @@ defineProps({
 }
 
 #guide :deep(img) {
-    @apply mx-auto py-3;
+    @apply mx-auto py-3 max-w-full;
 }
 
 #guide :deep(ol) {

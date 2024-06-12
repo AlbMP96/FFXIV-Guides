@@ -10,16 +10,17 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Guide;
 use App\Models\FFClass;
+use Illuminate\Database\Eloquent\Builder;
 
 class GuidesController extends Controller
 {
     public function index()
     {
-
         $response = Http::get('https://na.lodestonenews.com/news/topics?limit=5');
         $news = $response->json();
 
         $guides = Guide::select('id', 'title', 'user_id', 'class_id')->with(['user:id,name', 'ffclass:id,name'])->paginate(10);
+        $classes = FFClass::all();
 
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
@@ -27,6 +28,7 @@ class GuidesController extends Controller
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
             'news' => $news,
+            'classes' => $classes,
             'guides' => $guides,
         ]);
     }
@@ -70,5 +72,29 @@ class GuidesController extends Controller
             'user_id' => Auth::id()
         ]);
         return redirect("/guide/$guide->id");
+    }
+
+    public function filter()
+    {
+        $title = request('title');
+        $class = request('class');
+        $classes = FFClass::all();
+
+        $guides = Guide::select('id', 'title', 'content', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name'])
+            ->when($title, function (Builder $query, string $title) {
+                $query->where('title', 'LIKE', "%$title%");
+            })
+            ->when($class, function (Builder $query, string $class) {
+                $query->where('class_id', $class);
+            })->paginate(10);
+
+        return Inertia::render('Welcome', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+            'classes' => $classes,
+            'guides' => $guides,
+        ]);
     }
 }
