@@ -44,7 +44,7 @@ function submit() {
                 </h1>
                 <form
                     @submit.prevent="submit"
-                    class="w-screen px-10 flex flex-col justify-center"
+                    class="w-screen px-10 flex flex-col items-center justify-center"
                 >
                     <div
                         class="grid grid-cols-2 gap-x-2 my-3 text-center justify-items-center mb-5"
@@ -61,7 +61,7 @@ function submit() {
                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
                             />
                         </div>
-                        <div class="justify-self-start my-3">
+                        <div class="justify-self-start">
                             <div class="h-1/2"></div>
                             <select
                                 name="ff-class"
