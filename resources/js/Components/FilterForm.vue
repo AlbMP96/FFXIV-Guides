@@ -30,28 +30,39 @@ router.reload({ only: ["guides"] });
         <h1 class="text-3xl underline text-center text-gray-200 my-5">
             Guides
         </h1>
-        <form @submit.prevent="submit">
-            <input
-                id="title"
-                type="text"
-                v-model="form.title"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
-            />
-            <select
-                name="ff-class"
-                id="ff-class"
-                v-model="form.class"
-                class="mx-3 text-black focus:ring-2 focus:ring-inset focus:ring-red-600 rounded-md border-0"
-            >
-                <option value="undefined" hidden selected>Select Class</option>
-                <option v-for="job in classes" :key="job.id" :value="job.id">
-                    {{ job.name }}
-                </option>
-            </select>
+        <form @submit.prevent="submit" class="px-10 text-center">
+            <div class="flex justify-center">
+                <div class="justify-self-end m-5">
+                    <label for="title" class="block leading-6 h-1/2 text-center"
+                        >Title</label
+                    >
+                    <input
+                        id="title"
+                        type="text"
+                        v-model="form.title"
+                        class="w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                    />
+                </div>
+                <select
+                    name="ff-class"
+                    id="ff-class"
+                    v-model="form.class"
+                    class="m-4 h-1/2 self-end text-black focus:ring-2 focus:ring-inset focus:ring-red-600 rounded-md border-0"
+                >
+                    <option value="null" selected>All</option>
+                    <option
+                        v-for="job in classes"
+                        :key="job.id"
+                        :value="job.id"
+                    >
+                        {{ job.name }}
+                    </option>
+                </select>
+            </div>
             <input
                 type="submit"
                 value="Filter"
-                class="mx-auto my-10 px-5 py-2 rounded-lg text-black bg-red-600 hover:cursor-pointer hover:bg-red-500"
+                class="mx-auto m-3 px-5 py-2 rounded-lg text-black bg-red-600 hover:cursor-pointer hover:bg-red-500"
             />
         </form>
         <GuideIndex v-for="post in guides.data" :guide="post" :key="post.id" />
