@@ -1,13 +1,9 @@
 <script setup>
 import { router } from "@inertiajs/vue3";
-import { reactive, ref, defineComponent } from "vue";
+import { reactive, ref } from "vue";
 import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import ImageUploader from "quill-image-uploader";
 import MainLayout from "@/Layouts/MainLayout.vue";
-
-const quillEdit = ref(null);
-const htmltest = ref(null);
 
 const modules = ref({
     name: "imageUploader",
@@ -71,7 +67,6 @@ function submit() {
                 >
                     Create your guide
                 </h1>
-                <div ref="htmltest"></div>
                 <form
                     @submit.prevent="submit"
                     class="w-screen px-10 flex flex-col items-center justify-center"
@@ -127,7 +122,6 @@ function submit() {
                         toolbar="full"
                         contentType="html"
                         v-model:content="form.guide"
-                        ref="quillEdit"
                         class="text-black bg-gray-100 min-h-screen w-9/12"
                     />
                     <input
