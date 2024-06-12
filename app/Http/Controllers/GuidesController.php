@@ -83,4 +83,16 @@ class GuidesController extends Controller
         ]);
         return redirect("/guide/$guide->id");
     }
+
+    public function image(Request $request)
+    {
+        $validatedData = $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5120',
+        ]);
+
+        $name = uniqid() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $name);
+
+        return "/images/" . $name;
+    }
 }

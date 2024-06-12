@@ -1,7 +1,36 @@
 <script setup>
 import { router } from "@inertiajs/vue3";
-import { reactive } from "vue";
+import { reactive, ref, defineComponent } from "vue";
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import ImageUploader from "quill-image-uploader";
 import MainLayout from "@/Layouts/MainLayout.vue";
+
+const quillEdit = ref(null);
+const htmltest = ref(null);
+
+const modules = ref({
+    name: "imageUploader",
+    module: ImageUploader,
+    options: {
+        upload: (file) => {
+            return new Promise((resolve, reject) => {
+                const formData = new FormData();
+                formData.append("image", file);
+
+                axios
+                    .post("/upload-image", formData)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject("Upload failed");
+                        console.error("Error:", err);
+                    });
+            });
+        },
+    },
+});
 
 defineProps({
     canLogin: {
@@ -42,6 +71,7 @@ function submit() {
                 >
                     Create your guide
                 </h1>
+                <div ref="htmltest"></div>
                 <form
                     @submit.prevent="submit"
                     class="w-screen px-10 flex flex-col items-center justify-center"
@@ -93,9 +123,11 @@ function submit() {
                         {{ errors.guide }}
                     </div>
                     <QuillEditor
+                        :modules="modules"
                         toolbar="full"
                         contentType="html"
                         v-model:content="form.guide"
+                        ref="quillEdit"
                         class="text-black bg-gray-100 min-h-screen w-9/12"
                     />
                     <input

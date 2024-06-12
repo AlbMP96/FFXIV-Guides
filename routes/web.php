@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [GuidesController::class, 'index']);
+Route::post('/upload-image', [GuidesController::class, 'image']);
 
 Route::get('/news', [NewsController::class, 'index']);
 
