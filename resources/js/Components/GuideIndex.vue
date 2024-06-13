@@ -16,6 +16,21 @@ defineProps(["guide"]);
                 {{ guide.title }}
             </Link>
         </h1>
-        <p>Guide by: {{ guide.user.name }} | {{ guide.ffclass.name }}</p>
+        <div class="inline-block align-middle">
+            <span class="align-middle">
+                Guide by: {{ guide.user.name }} | {{ guide.ffclass.name }}
+            </span>
+            <img
+                :class="`h-12 float-end border-2 border-yellow-300 rounded-md object-center ${
+                    guide.ffclass.role == 'Tank'
+                        ? 'bg-blue-600'
+                        : guide.ffclass.role == 'DPS'
+                        ? 'bg-red-600'
+                        : 'bg-green-700'
+                }`"
+                :src="`assets/job-icons/${guide.ffclass.icon}`"
+                alt=""
+            />
+        </div>
     </div>
 </template>

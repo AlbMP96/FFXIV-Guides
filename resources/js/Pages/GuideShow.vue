@@ -1,7 +1,8 @@
 <script setup>
+import { ref, toRef } from "vue";
 import MainLayout from "@/Layouts/MainLayout.vue";
 
-defineProps({
+const props = defineProps({
     canLogin: {
         type: Boolean,
     },
@@ -12,6 +13,8 @@ defineProps({
         type: JSON,
     },
 });
+
+const icon = toRef(props, "guide");
 </script>
 
 <template>
@@ -31,6 +34,7 @@ defineProps({
                     <p class="mx-2">
                         Guide by: {{ guide.user.name }} |
                         {{ guide.ffclass.name }}
+                        <img :src="`/assets/job-icons/${icon.ffclass.icon}`" />
                     </p>
                 </div>
                 <div v-html="guide.content" id="guide"></div>

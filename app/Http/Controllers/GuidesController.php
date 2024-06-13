@@ -22,7 +22,7 @@ class GuidesController extends Controller
         $title = request('title');
         $class = request('class');
 
-        $guides = Guide::select('id', 'title', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name'])
+        $guides = Guide::select('id', 'title', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name,icon,role'])
             ->when($title, function (Builder $query, string $title) {
                 $query->where('title', 'LIKE', "%$title%");
             })
@@ -58,7 +58,7 @@ class GuidesController extends Controller
 
     public function show($id)
     {
-        $guide = Guide::select('id', 'title', 'content', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name'])->findOrFail($id);
+        $guide = Guide::select('id', 'title', 'content', 'class_id', 'user_id')->with(['user:id,name', 'ffclass:id,name,icon,role'])->findOrFail($id);
 
         return Inertia::render('GuideShow', [
             'canLogin' => Route::has('login'),
