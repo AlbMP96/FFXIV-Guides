@@ -29,21 +29,21 @@ const props = defineProps({
                     {{ guide.title }}
                 </h1>
                 <div class="flex border-b-2 border-red-600 pb-5">
-                    <p class="mx-2">
+                    <p class="mx-2 pt-2">
                         Guide by: {{ guide.user.name }} |
                         {{ guide.ffclass.name }}
-                        <img
-                            :class="`h-12 border-2 border-yellow-300 rounded-md object-center ${
-                                guide.ffclass.role == 'Tank'
-                                    ? 'bg-blue-600'
-                                    : guide.ffclass.role == 'DPS'
-                                    ? 'bg-red-600'
-                                    : 'bg-green-700'
-                            }`"
-                            :src="`/assets/job-icons/${guide.ffclass.icon}`"
-                            alt=""
-                        />
                     </p>
+                    <img
+                        :class="`h-12 border-2 border-yellow-300 rounded-md ${
+                            guide.ffclass.role == 'Tank'
+                                ? 'bg-blue-600'
+                                : guide.ffclass.role == 'DPS'
+                                ? 'bg-red-600'
+                                : 'bg-green-700'
+                        }`"
+                        :src="`/assets/job-icons/${guide.ffclass.icon}`"
+                        alt=""
+                    />
                 </div>
                 <div v-html="guide.content" id="guide"></div>
             </div>

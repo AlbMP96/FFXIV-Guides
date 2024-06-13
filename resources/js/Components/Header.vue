@@ -54,7 +54,7 @@ defineProps({
             <template v-else>
                 <Link
                     :href="route('login')"
-                    class="hidden md:inline rounded-md px-3 py-2 ring-1 ring-transparent transition focus:outline-none text-white hover:text-white/80 focus-visible:ring-white"
+                    class="hidden sm:inline rounded-md px-3 py-2 ring-1 ring-transparent transition focus:outline-none text-white hover:text-white/80 focus-visible:ring-white"
                 >
                     Log in
                 </Link>
@@ -62,11 +62,11 @@ defineProps({
                 <Link
                     v-if="canRegister"
                     :href="route('register')"
-                    class="hidden md:inline rounded-md px-3 py-2 ring-1 ring-transparent transition focus:outline-none text-white hover:text-white/80 focus-visible:ring-white"
+                    class="hidden sm:inline rounded-md px-3 py-2 ring-1 ring-transparent transition focus:outline-none text-white hover:text-white/80 focus-visible:ring-white"
                 >
                     Register
                 </Link>
-                <LoginDropdown class="visible md:hidden" />
+                <LoginDropdown class="visible sm:hidden" />
             </template>
         </nav>
 
