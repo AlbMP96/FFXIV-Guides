@@ -76,7 +76,7 @@ function submit() {
                 </h1>
                 <form
                     @submit.prevent="submit"
-                    class="w-screen px-10 flex flex-col items-center justify-center"
+                    class="px-10 flex flex-col items-center justify-center"
                 >
                     <div
                         class="grid grid-cols-2 gap-x-2 my-3 text-center justify-items-center mb-5"
@@ -129,7 +129,7 @@ function submit() {
                         toolbar="full"
                         contentType="html"
                         v-model:content="form.guide"
-                        class="text-black bg-gray-100 min-h-screen w-9/12"
+                        class="text-black bg-gray-100 min-h-screen w-11/12"
                     />
                     <input
                         type="submit"
@@ -144,7 +144,7 @@ function submit() {
 
 <style lang="postcss" scoped>
 :deep(.ql-toolbar) {
-    @apply w-9/12;
+    @apply w-11/12;
 }
 
 :deep(.ql-editor) {

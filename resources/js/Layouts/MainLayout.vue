@@ -17,9 +17,7 @@ defineProps({
 
 <template>
     <Head :title="title" />
-    <div
-        class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50 w-screen"
-    >
+    <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
         <div
             class="relative mx-2 flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white m-0"
         >
