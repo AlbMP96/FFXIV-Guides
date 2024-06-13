@@ -40,6 +40,9 @@ defineProps({
 </template>
 
 <style lang="postcss" scoped>
+#guide {
+    overflow: auto;
+}
 #guide :deep(h1) {
     @apply text-3xl underline text-center pt-4 pb-2;
 }
@@ -50,10 +53,6 @@ defineProps({
 
 #guide :deep(h3) {
     @apply text-xl underline;
-}
-
-#guide :deep(img) {
-    @apply mx-auto py-3 max-w-full;
 }
 
 #guide :deep(ol) {

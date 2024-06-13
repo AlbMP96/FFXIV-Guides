@@ -3,9 +3,10 @@ import { router } from "@inertiajs/vue3";
 import { reactive, ref } from "vue";
 import { QuillEditor } from "@vueup/vue-quill";
 import ImageUploader from "quill-image-uploader";
+import BlotFormatter from "quill-blot-formatter";
 import MainLayout from "@/Layouts/MainLayout.vue";
 
-const modules = ref({
+const uploaderModule = ref({
     name: "imageUploader",
     module: ImageUploader,
     options: {
@@ -26,6 +27,12 @@ const modules = ref({
             });
         },
     },
+});
+
+const formatterModule = ref({
+    name: "blotFormatter",
+    module: BlotFormatter,
+    options: {},
 });
 
 defineProps({
@@ -118,7 +125,7 @@ function submit() {
                         {{ errors.guide }}
                     </div>
                     <QuillEditor
-                        :modules="modules"
+                        :modules="[uploaderModule, formatterModule]"
                         toolbar="full"
                         contentType="html"
                         v-model:content="form.guide"
