@@ -24,7 +24,7 @@ const submit = () => {
     <MainLayout title="Register">
         <form
             @submit.prevent="submit"
-            class="text-black flex flex-col mx-auto w-1/2 md:w-1/4 bg-gray-100 p-5 rounded-md border-red-600 border-2"
+            class="text-black flex flex-col mx-auto w-full sm:w-3/4 md:w-1/2 bg-gray-100 p-5 rounded-md border-red-600 border-2"
         >
             <div>
                 <InputLabel for="name" value="Name" />
@@ -93,7 +93,9 @@ const submit = () => {
                 />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div
+                class="flex flex-col sm:flex-row items-center justify-end mt-4"
+            >
                 <Link
                     :href="route('login')"
                     class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -102,7 +104,7 @@ const submit = () => {
                 </Link>
 
                 <PrimaryButton
-                    class="ms-4"
+                    class="sm:ms-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
