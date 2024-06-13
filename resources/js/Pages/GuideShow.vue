@@ -34,7 +34,17 @@ const icon = toRef(props, "guide");
                     <p class="mx-2">
                         Guide by: {{ guide.user.name }} |
                         {{ guide.ffclass.name }}
-                        <img :src="`/assets/job-icons/${icon.ffclass.icon}`" />
+                        <img
+                            :class="`h-12 border-2 border-yellow-300 rounded-md object-center ${
+                                guide.ffclass.role == 'Tank'
+                                    ? 'bg-blue-600'
+                                    : guide.ffclass.role == 'DPS'
+                                    ? 'bg-red-600'
+                                    : 'bg-green-700'
+                            }`"
+                            :src="`/assets/job-icons/${guide.ffclass.icon}`"
+                            alt=""
+                        />
                     </p>
                 </div>
                 <div v-html="guide.content" id="guide"></div>

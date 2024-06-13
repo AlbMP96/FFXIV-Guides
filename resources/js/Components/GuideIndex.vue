@@ -28,7 +28,7 @@ defineProps(["guide"]);
                         ? 'bg-red-600'
                         : 'bg-green-700'
                 }`"
-                :src="`assets/job-icons/${guide.ffclass.icon}`"
+                :src="`/assets/job-icons/${guide.ffclass.icon}`"
                 alt=""
             />
         </div>
