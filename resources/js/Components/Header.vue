@@ -43,7 +43,7 @@ defineProps({
                 :href="route('logout')"
                 method="post"
                 as="button"
-                class="justify-self-end rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                class="justify-self-end rounded-md px-3 py-2 ring-1 ring-transparent transitionfocus:outline-none text-white hover:text-white/80 focus-visible:ring-white"
             >
                 Log Out
             </Link>
@@ -51,7 +51,7 @@ defineProps({
             <template v-else>
                 <Link
                     :href="route('login')"
-                    class="hidden md:inline rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                    class="hidden md:inline rounded-md px-3 py-2 ring-1 ring-transparent transition focus:outline-none text-white hover:text-white/80 focus-visible:ring-white"
                 >
                     Log in
                 </Link>
@@ -59,7 +59,7 @@ defineProps({
                 <Link
                     v-if="canRegister"
                     :href="route('register')"
-                    class="hidden md:inline rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                    class="hidden md:inline rounded-md px-3 py-2 ring-1 ring-transparent transition focus:outline-none text-white hover:text-white/80 focus-visible:ring-white"
                 >
                     Register
                 </Link>
