@@ -13,8 +13,6 @@ const props = defineProps({
         type: JSON,
     },
 });
-
-const icon = toRef(props, "guide");
 </script>
 
 <template>
