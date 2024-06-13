@@ -28,7 +28,7 @@ class GuidesController extends Controller
             })
             ->when($class, function (Builder $query, string $class) {
                 $query->where('class_id', $class);
-            })->paginate(1);
+            })->paginate(10);
 
         $classes = FFClass::all();
 
