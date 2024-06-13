@@ -17,9 +17,11 @@ defineProps({
 
 <template>
     <header
-        class="grid items-center gap-2 pt-10 mb-10 grid-cols-3 border border-3 border-b-red-600 border-l-transparent border-t-transparent border-r-transparent"
+        class="grid grid-cols-3 text-sm sm:text-base items-center gap-2 pt-10 mb-10 grid-rows-2 border border-3 border-b-red-600 border-l-transparent border-t-transparent border-r-transparent"
     >
-        <Link class="lg:w-28 size-20 text-center" href="/"
+        <Link
+            class="lg:w-28 col-start-2 justify-self-center sm:justify-self-start sm:col-start-1 size-20 text-center"
+            href="/"
             ><ApplicationLogo
         /></Link>
         <Link href="/"
@@ -29,11 +31,12 @@ defineProps({
         /></Link>
         <nav
             v-if="canLogin"
-            :class="
-                $page.props.auth.user
-                    ? 'mx-3 grid grid-cols-1 justify-end'
-                    : 'mx-3 flex flex-1 justify-self-end'
-            "
+            :class="`col-start-2 col-end-4 sm:col-start-3 row-start-2
+                ${
+                    $page.props.auth.user
+                        ? 'mx-3 grid grid-cols-1 justify-end'
+                        : 'mx-3 flex flex-1 justify-self-end'
+                }`"
         >
             <span v-if="$page.props.auth.user" class="justify-self-end">
                 {{ $page.props.auth.user.name }}

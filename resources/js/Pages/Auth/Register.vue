@@ -24,7 +24,7 @@ const submit = () => {
     <MainLayout title="Register">
         <form
             @submit.prevent="submit"
-            class="text-black flex flex-col mx-auto w-full sm:w-3/4 md:w-1/2 bg-gray-100 p-5 rounded-md border-red-600 border-2"
+            class="text-black flex flex-col mx-auto w-full sm:w-3/4 md:w-1/2 bg-gray-100 p-5 rounded-md border-red-600 border-2 mb-4"
         >
             <div>
                 <InputLabel for="name" value="Name" />
