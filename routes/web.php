@@ -9,13 +9,13 @@ use Inertia\Inertia;
 Route::get('/', [GuidesController::class, 'index']);
 Route::post('/upload-image', [GuidesController::class, 'image']);
 
-Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news', [NewsController::class, 'index'])->name('news');
 
 Route::get('/guide', [GuidesController::class, 'create'])->middleware(['auth', 'verified'])->name('guide');
 
-Route::post('/guide', [GuidesController::class, 'store']);
+Route::post('/guide', [GuidesController::class, 'store'])->name('postguide');
 
-Route::get('/guide/{id}', [GuidesController::class, 'show']);
+Route::get('/guide/{id}', [GuidesController::class, 'show'])->name('showguide');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

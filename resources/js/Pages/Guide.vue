@@ -57,7 +57,7 @@ const form = reactive({
 });
 
 function submit() {
-    router.post("/guide", form);
+    router.post(route("postguide"), form);
 }
 </script>
 
