@@ -36,7 +36,7 @@ function submit() {
         </h1>
         <form @submit.prevent="submit" class="px-10 text-center">
             <div class="flex flex-col sm:flex-row justify-center">
-                <div class="justify-self-end m-5">
+                <div class="justify-self-center sm:justify-self-end m-5">
                     <label for="title" class="block leading-6 h-1/2 text-center"
                         >Title</label
                     >
@@ -44,7 +44,7 @@ function submit() {
                         id="title"
                         type="text"
                         v-model="form.title"
-                        class="rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                        class="max-w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
                     />
                 </div>
                 <select

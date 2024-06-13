@@ -51,7 +51,7 @@ defineProps({
             <template v-else>
                 <Link
                     :href="route('login')"
-                    class="hidden md:visible rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                    class="hidden md:inline rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                 >
                     Log in
                 </Link>
@@ -59,7 +59,7 @@ defineProps({
                 <Link
                     v-if="canRegister"
                     :href="route('register')"
-                    class="hidden md:visible rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                    class="hidden md:inline rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                 >
                     Register
                 </Link>
@@ -67,7 +67,7 @@ defineProps({
             </template>
         </nav>
 
-        <nav class="mb-5 col-start-1 row-start-2 overflow-visible">
+        <nav class="mb-5 col-start-1 col-end-3 row-start-2 overflow-visible">
             <Link
                 :href="route('news')"
                 class="mx-2 hover:underline hover:decoration-red-600"
