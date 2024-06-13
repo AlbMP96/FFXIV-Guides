@@ -20,13 +20,7 @@ defineProps({
             v-for="(link, index) in links"
             v-if="links.length > 3"
             :key="index"
-            :href="
-                link.url
-                    ? `${link.url}&class=${classId ? classId : ''}&title=${
-                          title ? title : ''
-                      }`
-                    : 'null'
-            "
+            :href="link.url"
             v-html="link.label"
             :class="`border-2 rounded-lg border-red-600 bg-slate-300 hover:bg-slate-400 text-black mr-3 px-2 py-1 row-start-1 ${
                 !link.url ? 'hidden' : ''

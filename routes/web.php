@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', [GuidesController::class, 'index']);
+Route::get('/', [GuidesController::class, 'index'])->name('index');
 Route::post('/upload-image', [GuidesController::class, 'image']);
 
 Route::get('/news', [NewsController::class, 'index'])->name('news');
