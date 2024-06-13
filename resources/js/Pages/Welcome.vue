@@ -28,6 +28,12 @@ defineProps({
     classes: {
         type: JSON,
     },
+    title: {
+        type: String,
+    },
+    classId: {
+        type: String,
+    },
 });
 
 router.reload({ only: ["guides"] });
@@ -37,7 +43,12 @@ router.reload({ only: ["guides"] });
     <MainLayout title="Welcome" :canLogin="canLogin" :canRegister="canRegister">
         <main>
             <ProgressSlider :items="news" />
-            <FilterForm :guides="guides" :classes="classes" />
+            <FilterForm
+                :guides="guides"
+                :classes="classes"
+                :title="title"
+                :class-id="classId"
+            />
         </main>
         <footer class="py-16 text-center text-sm text-black dark:text-white/70">
             Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})

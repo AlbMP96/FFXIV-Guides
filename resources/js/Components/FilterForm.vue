@@ -11,6 +11,12 @@ defineProps({
     classes: {
         type: JSON,
     },
+    title: {
+        type: String,
+    },
+    classId: {
+        type: String,
+    },
 });
 
 const form = reactive({
@@ -64,6 +70,6 @@ function submit() {
             />
         </form>
         <GuideIndex v-for="post in guides.data" :guide="post" :key="post.id" />
-        <Paginator :links="guides.links" />
+        <Paginator :links="guides.links" :title="title" :class-id="classId" />
     </div>
 </template>

@@ -28,7 +28,7 @@ class GuidesController extends Controller
             })
             ->when($class, function (Builder $query, string $class) {
                 $query->where('class_id', $class);
-            })->paginate(10);
+            })->paginate(1);
 
         $classes = FFClass::all();
 
@@ -40,6 +40,8 @@ class GuidesController extends Controller
             'news' => $news,
             'classes' => $classes,
             'guides' => $guides,
+            'title' => $title,
+            "classId" => $class
         ]);
     }
 
@@ -86,7 +88,7 @@ class GuidesController extends Controller
 
     public function image(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5120',
         ]);
 
