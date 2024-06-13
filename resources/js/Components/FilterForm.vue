@@ -35,7 +35,7 @@ function submit() {
             Guides
         </h1>
         <form @submit.prevent="submit" class="px-10 text-center">
-            <div class="flex justify-center">
+            <div class="flex flex-col sm:flex-row justify-center">
                 <div class="justify-self-end m-5">
                     <label for="title" class="block leading-6 h-1/2 text-center"
                         >Title</label
@@ -44,14 +44,14 @@ function submit() {
                         id="title"
                         type="text"
                         v-model="form.title"
-                        class="w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                        class="rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
                     />
                 </div>
                 <select
                     name="ff-class"
                     id="ff-class"
                     v-model="form.class"
-                    class="m-4 h-1/2 self-end text-black focus:ring-2 focus:ring-inset focus:ring-red-600 rounded-md border-0"
+                    class="m-4 h-1/2 self-center sm:self-end text-black focus:ring-2 focus:ring-inset focus:ring-red-600 rounded-md border-0"
                 >
                     <option value="null" selected>All</option>
                     <option
