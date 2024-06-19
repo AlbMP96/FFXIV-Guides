@@ -2,6 +2,14 @@
 
 Web aimed to the creation of guides on the FFXIV game.
 
+## Technologies used
+- [Laravel](https://laravel.com/)
+- [VueJS](https://vuejs.org/)
+- [InertiaJS](https://inertiajs.com/)
+- [Tailwind](https://tailwindcss.com/)
+- [MySQL](https://www.mysql.com/)
+- [Docker](https://www.docker.com/)
+
 ## Local installation
 
 - If you want to run the project on a docker container the installation of all Composer dependecies are needed through this command:
